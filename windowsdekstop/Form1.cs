@@ -41,5 +41,32 @@ namespace windowsdekstop
         {
 
         }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void passwordForm_TextChanged(object sender, EventArgs e)
+        {
+            this.passwordForm.AutoSize = false;
+            this.passwordForm.Size = new Size(this.passwordForm.Size.Width, 64);
+        }
+
+        private void loginForms_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void closebutton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

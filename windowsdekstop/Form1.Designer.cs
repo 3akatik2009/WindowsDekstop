@@ -30,24 +30,27 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel1 = new Panel();
-            textBox1 = new TextBox();
+            button1 = new Button();
+            loginForms = new TextBox();
+            passwordForm = new TextBox();
+            pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
+            closebutton = new Button();
             label2 = new Label();
             label1 = new Label();
-            pictureBox2 = new PictureBox();
-            textBox2 = new TextBox();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.Green;
-            panel1.Controls.Add(textBox2);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(button1);
+            panel1.Controls.Add(loginForms);
+            panel1.Controls.Add(passwordForm);
             panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Fill;
@@ -58,14 +61,55 @@
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
-            // textBox1
+            // button1
             // 
-            textBox1.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBox1.Location = new Point(92, 230);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(229, 64);
-            textBox1.TabIndex = 1;
+            button1.BackColor = Color.Green;
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseDownBackColor = Color.Green;
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 192, 0);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            button1.ForeColor = SystemColors.Control;
+            button1.Location = new Point(92, 342);
+            button1.Name = "button1";
+            button1.Size = new Size(192, 49);
+            button1.TabIndex = 2;
+            button1.Text = "Войти";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // loginForms
+            // 
+            loginForms.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            loginForms.Location = new Point(92, 147);
+            loginForms.Multiline = true;
+            loginForms.Name = "loginForms";
+            loginForms.Size = new Size(229, 64);
+            loginForms.TabIndex = 1;
+            loginForms.TextChanged += loginForms_TextChanged;
+            // 
+            // passwordForm
+            // 
+            passwordForm.AutoCompleteMode = AutoCompleteMode.Suggest;
+            passwordForm.Font = new Font("Segoe UI", 32.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            passwordForm.Location = new Point(92, 230);
+            passwordForm.Name = "passwordForm";
+            passwordForm.Size = new Size(229, 65);
+            passwordForm.TabIndex = 1;
+            passwordForm.UseSystemPasswordChar = true;
+            passwordForm.TextChanged += passwordForm_TextChanged;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(12, 147);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(64, 64);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 0;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox1_Click;
             // 
             // pictureBox1
             // 
@@ -81,6 +125,7 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(closebutton);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Top;
@@ -89,6 +134,25 @@
             panel2.Size = new Size(390, 119);
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
+            // 
+            // closebutton
+            // 
+            closebutton.BackColor = Color.DarkRed;
+            closebutton.BackgroundImageLayout = ImageLayout.Zoom;
+            closebutton.Cursor = Cursors.Hand;
+            closebutton.FlatAppearance.BorderColor = Color.White;
+            closebutton.FlatAppearance.MouseDownBackColor = Color.Red;
+            closebutton.FlatStyle = FlatStyle.Flat;
+            closebutton.Font = new Font("Avignon Pro", 11.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            closebutton.ForeColor = Color.White;
+            closebutton.Location = new Point(368, 0);
+            closebutton.Name = "closebutton";
+            closebutton.RightToLeft = RightToLeft.Yes;
+            closebutton.Size = new Size(22, 27);
+            closebutton.TabIndex = 2;
+            closebutton.Text = "X";
+            closebutton.UseVisualStyleBackColor = false;
+            closebutton.Click += closebutton_Click;
             // 
             // label2
             // 
@@ -113,26 +177,6 @@
             label1.TextAlign = ContentAlignment.MiddleCenter;
             label1.Click += label1_Click;
             // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(12, 147);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(64, 64);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 0;
-            pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox1_Click;
-            // 
-            // textBox2
-            // 
-            textBox2.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textBox2.Location = new Point(92, 147);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(229, 64);
-            textBox2.TabIndex = 1;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -140,15 +184,16 @@
             ClientSize = new Size(390, 463);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -159,8 +204,10 @@
         private Label label1;
         private Label label2;
         private PictureBox pictureBox1;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox passwordForm;
+        private TextBox loginForms;
         private PictureBox pictureBox2;
+        private Button button1;
+        private Button closebutton;
     }
 }
