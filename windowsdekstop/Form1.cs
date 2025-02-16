@@ -108,7 +108,7 @@ namespace windowsdekstop
                 MainForm mainForm = new MainForm();
                 mainForm.Show();
             }
-            else MessageBox.Show("no");
+            else MessageBox.Show("Такого пользователя не существует");
         }
 
         private void label2_Click(object sender, EventArgs e)
